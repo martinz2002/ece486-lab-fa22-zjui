@@ -88,28 +88,28 @@ if(Mp > 0)
     text(t(MpIndex),y(MpIndex),'\leftarrow M_p',...
         'HorizontalAlignment','left')
     line([t(MpIndex);t(MpIndex)],[0,y(MpIndex)],...
-        'Color','k','LineWidth',0.5,'LineStyle',':')
+        'Color','k','LineWidth',0.5,'LineStyle',':','HandleVisibility','off')
 end
 %document tr
 text(t(t_10index),y(t_10index),'\leftarrow 10%',...
     'HorizontalAlignment','left')
 line([t(t_10index);t(t_10index)],[0,y(t_10index)],...
-    'Color','k','LineWidth',0.5,'LineStyle',':')
+    'Color','k','LineWidth',0.5,'LineStyle',':','HandleVisibility','off')
  
 text(t(t_90index),y(t_90index),'\leftarrow 90%',...
     'HorizontalAlignment','left')
-% line([t(t_90index);t(t_90index)],[0,y(t_90index)],...
-%    'Color','k','LineWidth',0.5,'LineStyle',':')
+line([t(t_90index);t(t_90index)],[0,y(t_90index)],...
+   'Color','k','LineWidth',0.5,'LineStyle',':','HandleVisibility','off')
  
 % YOU DOCUMENT tss IN THE SAME WAY AS tr AND Mp
 % document tss
 text(t(tssIndex),y(tssIndex),'\leftarrow t_{ss}','HorizontalAlignment','left')
-% line([t(tssIndex);y(tssIndex)],[0,y(tssIndex)],'Color','k','LineWidth',0.5,'LineStyle',':')
+line([t(tssIndex);t(tssIndex)],[0,y(tssIndex)],'Color','k','LineWidth',0.5,'LineStyle',':','HandleVisibility','off')
 
 title({'M_p, t_r, and t_s for a transfer function _{ECE 486}';date})
 % Label the axes:
-ylabel("this is ylabel");
-xlabel("this is xlabel");
+xlabel("t, time");
+ylabel("response to step in reference");
 
 % make the plot line thicker
 hold on
