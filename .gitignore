@@ -38,3 +38,15 @@ octave-workspace
 ~$*.xls
 ~$*.pptx
 ~$*.ppt
+
+# Latex
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc

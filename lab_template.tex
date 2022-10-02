@@ -1,0 +1,51 @@
+% LaTeX template for ECE 486 Lab
+
+\documentclass[12pt, a4paper]{article}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage{fontenc}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{mathtools} % load AMS maths
+\usepackage{amsmath}  % for math spacing
+\usepackage{amssymb}  % for math spacing
+\usepackage{fontspec}
+\usepackage[margin=1in]{geometry} % an easy way to change page layout, Thanks to Brady Salz 
+\usepackage{kpfonts-otf} % Note this package has already defined differential operator d
+
+% \usepackage{mathptmx}
+% \setmainfont{Times New Roman}
+
+\newcommand{\score}{\hfill \underline{\hspace{0.65cm}}\,/} % for score underline
+\newcommand\RR{\textsuperscript{\textregistered}~} % for registered mark
+\newcommand{\EXERCISE}[1]{\subsection*{Ex \textit{#1}.}}
+\newcommand\makeMyTitle{\maketitle \thispagestyle{empty}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{ECE486}
+\fancyhead[C]{\REPORTTITLE}
+\fancyhead[R]{\today}
+\fancyfoot[L]{Reported by \AUTHOR}
+\fancyfoot[C]{}
+\fancyfoot[R]{--\thepage--}
+
+\fancypagestyle{firstPage}{
+    \fancyhf{}
+    \fancyfoot[R]{--\thepage--}
+}
+
+\newcommand{\E}{\text{e}}
+\newcommand{\Diff}{\text{d}}
+% \newcommand{\D}{\text{d}}
+
+
+\title{ECE486 Lab Report \\ \textbf{\REPORTTITLE}}
+\author{Section \textit{LA1} \\ \AUTHOR \\ \ID}
+\date{\today}
+
+\def\AUTHOR{Tiantian Zhong}
+\def\ID{3200110643}
+\def\REPORTTITLE{Lab \LABNUMBER: \textsc{\LABTITLE}}
+
+\everymath{\displaystyle}

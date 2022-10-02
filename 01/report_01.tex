@@ -1,177 +1,70 @@
-% LaTeX template for ECE 486 Lab; this template should be used with "report"
-% section in the lab manual
+% Lab 1: Analog Simulation
+\input{../lab_template.tex}
 
-% by Y\"un Han
-% 2017-06-06
+\def\LABNUMBER{1}
+\def\LABTITLE{Analog Simulation}
 
-% A lot of changes have happened during the last four years. So a major overhaul
-% is needed.
-
-% -------------------
-% Editor + TeX engine
-% -------------------
-% There are many online TeX services which require no local installation of TeX
-% on your computer. Over the years, I have seen students use
-% https://www.overleaf.com https://www.sharelatex.com among others although I
-% have no direct experience of any of them. If you do not want any hassle of
-% having a copy of TeX on your machine, or you don't mind privacy policies of
-% those online services, you can use the online TeX system as well. They will
-% serve you well, at least for our lab report.
-
-% If you are really interested in beautiful print, and efficient editing, you
-% can explore other options. For example, I use local TeX installations on my
-% Linux, Mac and Windows machines. See the original preamble regarding how to
-% choose a proper distribution for different platforms.
-
-% As for editors, I use emacs + AUCTeX. You can enable major modes to handle
-% *.tex files and minor modes to streamline your typesetting. For example, most
-% people will use PDF mode rather than output files in *.ps or *.dvi these
-% days; LaTeX-math-mode will speed up entering common math symbols and Greek
-% letters; auto-complete will do a similar thing; flyspell mode will give you
-% spell check etc.
-
-% As for setting up emacs itself, you can check out Jess Hamrick's github repo
-% https://github.com/jhamrick/emacs. I only enabled auctex, auto-complete,
-% color-them-solarized, helm, helm-descbinds, and nyan-mode. To get these these
-% packages installed, you can use el-get package management for emacs. 
-
-% For ECE 486 however, portable set-up is already available on lab computers
-% N:\labs\ECE486\ece486_Emacs_LaTeX
-% Configuration files are also available from this repo
-% https://github.com/yunlhan/ece486lab_latex/tree/master/emacs_latex
-
-% ------------
-% LaTeX how-to 
-% ------------
-% I use the following
-% https://en.wikibooks.org/wiki/LaTeX
-% https://en.wikibooks.org/wiki/LaTeX/Tips_and_Tricks
-% https://tex.stackexchange.com
-
-% ---------------
-% Working example
-% ---------------
-% I wrote a book (127 pages) based on my lectures notes. You can scan the book
-% and you may find it helpful when you use LaTeX. For example, how to handle
-% cases in equations, how to selectively label questions, advanced graphics,
-% references, just name a few. The book is in available in another repo
-% https://github.com/yunlhan/ENT40days
-
-% -------------
-% Writing guide
-% -------------
-% You may find the Guardian style guide useful,
-% https://www.theguardian.com/guardian-observer-style-guide-a Especially, their
-% guide on "quotation marks" and "commas".
-
-% -----------------------------------------------------------------------------
-
-% original preamble
-%
-% This is the alpha version of lab report template in LaTeX. Inspired by the
-% effort of Daniel Whisman (enrolled in ECE 486, Fall 2013)
-% written by Y\"un L. Han.
-% 2014-09-07
-
-% It is recommended to use 
-%
-% TeXLive on Linux, url: http://tug.org/texlive/
-% MacTex on Mac OS X, url: http://tug.org/mactex/
-% MikTeX on Windows, url: http://miktex.org/
-
-% For more info about how to use LaTeX (not TeX, TeX is a programming
-% language, however LaTeX is not), see a quick guide from ECE Thesis wiki,
-
-% https://wiki.cites.illinois.edu/wiki/display/ECEThesisReview/LaTeX+Resources
-
-% Read the Documentation file ECE LaTeX Guide.pdf down at the bottom 
-% of the page. As a starter, you only have to learn briefly how to typeset 
-% equations and insert figures and other graphics. As an experienced user,
-% however, you can grab the template and write your report immediately.
-
-\documentclass{article}
-% \usepackage{graphicx}
-% \usepackage{caption}
-\usepackage{mathtools} % load AMS maths
-\usepackage{amsmath}  % for math spacing
-\usepackage{amssymb}  % for math spacing
-\usepackage[margin=2.5cm]{geometry} % an easy way to change page layout, Thanks to Brady Salz 
-\newcommand{\score}{\hfill \underline{\hspace{0.65cm}}\,/} % for score underline
-\newcommand\RR{\textsuperscript{\textregistered}~} % for registered mark
 \begin{document}
-% consider aligning your names like the following
-% ----
-% ************Lab X Report 
-%
-% ************by YOUR NAME
-% ******Lab Partner: HIS/HER NAME
-% ******Lab      TA: Y\"un Han
-% ----
-\title{\bf Lab \#1 Report\\{\sc Simulation Using \\the Analog Computer}}
-\author{Your Name\\ Section AB\emph{X}\\
-  Your Lab Partner's Name\\
-  Your TA's name}
-\maketitle
-\noindent \fbox{\bf \Large Total: \underline{\hspace{0.65cm}}\,/40}
-\section*{Question 1 \score 15}
-\subsection*{Theoretical and Experimental Results \score 5}
-\begin{table}[phtb]
-  \begin{center}
-    \caption{Theoretical and Experimental Results}
-     \label{tbl:lab1_q1}
-    \begin{tabular}{c|rr|rr|rr} \hline \hline
-      & \multicolumn{2}{c}{$M_p$ (\%)} & \multicolumn{2}{c}{$t_r$ (s)} & \multicolumn{2}{c}{$t_s$ (s)} \\ \cline{2-7} % horizontal line spanning across specified columns
-      $\zeta$ & Theory & Experiment & Theory & Experiment & Theory & Experiment \\
-      \hline
-      2.0 & &&&&&\\ 
-      1.5 & &&&&&\\
-      1.0 & &&&&&\\
-      0.8 & &&&&&\\
-      0.7 & &&&&&\\
-      0.5 & &&&&&\\
-      0.3 & &&&&&\\
-      0.2 & &&&&& \\ \hline 
-    \end{tabular} 
-    \end{center}
-\end{table}
-\subsection*{Comparison of Theoretical/Experimental Results \score 5}
-% add your discussion here 
 
-\subsection*{Discussion of Variation of $\zeta$ with $M_p$, $t_r$, and $t_s$ \score 5}
-% add your discussion here
-% for example
-(As $\zeta$ decreases, how does $M_p$ change? As $\zeta$ decreases, how about $t_r$ and $t_s$?)
+\makeMyTitle
 
-\section*{Question 2 \score 15}
+\section*{Prelab Exercises}
+\EXERCISE{a}
 
-\subsection*{Effect of $\zeta$ on Pole Locations \score 5}
-(Solve for poles in terms of $\zeta$ and sketch a plot of trajectory of pole locations [you can use {\sc Matlab\RR}] when $\zeta$ varies.)
-% add your discussion here
+From Newton's 3rd law, we derive the following equation:
+\begin{align*}
+  ma_{tot} &= f + b\dot{x}+kx \\
+  a_{tot} &= \frac{\D^2}{\D t^2} x
+\end{align*}
+thus we have the second-order ODE for the system,
+\begin{equation*}
+  m\ddot{x}=b\dot{x}+kx+f
+\end{equation*}
+and by simplifying the equation, we obtain
+\begin{equation*}
+  \ddot{x}=\frac{b}{m}\dot{x}+\frac{k}{m}x+\frac{f}{m}
+\end{equation*}
 
-\subsection*{Effect of Pole Locations on $M_p$, $t_r$, and $t_s$ for an Underdamped System \score 5}
-(What is the value of $\zeta$ when a system is \emph{underdamped}? As $\zeta$ increases, what happens to $M_p$, $t_r$, and $t_s$?)
-% add your discussion here
+Substituting the values for $m$, $b$, $k$, and $f$ we obtain
+\begin{equation}
+  \begin{cases}
+    \ddot{x}&=\frac{0.7}{2}\dot{x}+\frac{1}{2}x+\frac{0.5}{2}\\
+    x_{t=0} &= 0 \\
+    \dot{x}_{t=0} &= 0.
+  \end{cases}
+\end{equation}
 
-\subsection*{Effect of Pole Locations on $M_p$, $t_r$, and $t_s$ for an Overdamped/Critically Damped System \score 5}
-(What is the value of $\zeta$ when a system is \emph{overdamped}? \emph{Critically damped}? And as $\zeta$ increases, what happens to $M_p$, $t_r$, and $t_s$?)
-% add your discussion here
+% End of Ex a.
 
-\section*{Question 3 \score 10}
+\EXERCISE{b}
 
-\subsection*{Comparison of $2^{\rm nd}$ Order System with $1^{\rm st}$ Order System with Dominant Pole \score 6}
-(What are the similarities/differences between the response of an overdamped $2^{\rm nd}$ order system to the response of a $1^{\rm st}$ order system with the \emph{dominant} (less negative, closer to the origin) pole of the $2^{\rm nd}$ order's poles?)
-% add your discussion here
+Transform the second-order ODE into a linear equatoin using Laplace Transform:
+\begin{align*}
+  \mathcal{L}\lbrace {\ddot{x}} \rbrace = s^2 X(s)
+                    = \frac{0.7}{2} sX(s) + \frac{1}{2} X(s) + \frac{0.5}{2s}.
+\end{align*}
 
-\subsection*{Effect of $\zeta$ on Accuracy of Approximation \score 4}
-(What is the effect of magnitude of $\zeta$ on the accuracy of the approximations? Also include your graphs.)
-% add your discussion here
-\newline \\[10mm]
-\noindent {\bf \large Attachments}
-\begin{itemize}
-\item Plots obtained during lab
-\item Sample response with relevant points for calculating $M_p$ , $t_s$ and $t_r$ marked
-\item Step responses comparing $2^{\rm nd}$ order systems and $1^{\rm st}$ order approximations
-\item {\sc Matlab} code
-\end{itemize}
+% End of Ex b.
+
+\EXERCISE{c}
+
+For Figure 2(b) in the manual we can derive a group of equations based on KVL,
+\begin{align}
+   q_C &= Ce_o(t) \\
+  e_i(t) - e_o(t) &= i(t)R \\
+  \D q_C &= i(t)\D t
+\end{align}
+which gives
+\begin{align*}
+  &e_i(t) - \frac{q_C}{C} = i(t) R
+\end{align*}
+i.e.
+\begin{align*}
+  &e_i(t) - \frac{1}{C}\int i(t)\D t- i(t)R = 0
+\end{align*}
+
+\section*{Plots}
+
+\section*{Data Analysis}
 
 \end{document}
