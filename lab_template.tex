@@ -1,6 +1,8 @@
+% !TEX program = lualatex
 % LaTeX template for ECE 486 Lab
 
-\documentclass[12pt, a4paper]{article}
+\documentclass[a4paper]{article}
+\usepackage{indentfirst}
 \usepackage{fancyhdr}
 \usepackage{enumerate}
 \usepackage{fontenc}
@@ -10,8 +12,24 @@
 \usepackage{amsmath}  % for math spacing
 \usepackage{amssymb}  % for math spacing
 \usepackage{fontspec}
-\usepackage[margin=1in]{geometry} % an easy way to change page layout, Thanks to Brady Salz 
-\usepackage{kpfonts-otf} % Note this package has already defined differential operator d
+\usepackage{lastpage}
+\usepackage[margin=1in]{geometry} % an easy way to change page layout
+                                  % Thanks to Brady Salz 
+\setlength{\parskip}{1em} % 设置段落间距
+% ----------------------------
+%            Tikz
+% ----------------------------
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{verbatim}
+
+% ----------------------------
+
+\usepackage{kpfonts-otf}
+% \usepackage{libertinus-otf}
+% \usepackage{plex-otf}
+% \newcommand{\D}{\text{d}}
 
 % \usepackage{mathptmx}
 % \setmainfont{Times New Roman}
@@ -19,33 +37,53 @@
 \newcommand{\score}{\hfill \underline{\hspace{0.65cm}}\,/} % for score underline
 \newcommand\RR{\textsuperscript{\textregistered}~} % for registered mark
 \newcommand{\EXERCISE}[1]{\subsection*{Ex \textit{#1}.}}
-\newcommand\makeMyTitle{\maketitle \thispagestyle{empty}}
+\newcommand{\EXERCISENAME}[2]{\subsection*{Ex #1: \textit{#2}}}
+\newcommand\makeMyTitle{\maketitle \thispagestyle{firstPage}}
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{ECE486}
-\fancyhead[C]{\REPORTTITLE}
-\fancyhead[R]{\today}
-\fancyfoot[L]{Reported by \AUTHOR}
-\fancyfoot[C]{}
-\fancyfoot[R]{--\thepage--}
+\fancyhead[C]{}
+\fancyhead[L]{\it Lab \LABNUMBER: \LABTITLE}
+\fancyhead[R]{\it \today}
+\fancyfoot[L]{\textit{Tiantian Zhong}}
+\fancyfoot[C]{\thepage/\pageref{LastPage}}
+\fancyfoot[R]{\textit{3200110643}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
 
 \fancypagestyle{firstPage}{
     \fancyhf{}
-    \fancyfoot[R]{--\thepage--}
+    \fancyhead[L]{\it ECE 486 \\\it Control Systems}
+    \fancyhead[C]{}
+    \fancyhead[R]{\it Fall 2022 \\\it  ZJU-UIUC Institute}
+    \fancyfoot[L]{}
+    \fancyfoot[C]{\thepage/\pageref{LastPage}}
+    \fancyfoot[R]{}
+    \renewcommand{\headrulewidth}{0.5pt}
+    \renewcommand{\footrulewidth}{0.5pt}
 }
 
 \newcommand{\E}{\text{e}}
 \newcommand{\Diff}{\text{d}}
-% \newcommand{\D}{\text{d}}
 
-
-\title{ECE486 Lab Report \\ \textbf{\REPORTTITLE}}
-\author{Section \textit{LA1} \\ \AUTHOR \\ \ID}
+\title{\textbf{Lab Report} \\ Lab \#\LABNUMBER: \textsc{\LABTITLE}}
+\author{\AUTHOR \\ \ID}
 \date{\today}
 
 \def\AUTHOR{Tiantian Zhong}
 \def\ID{3200110643}
-\def\REPORTTITLE{Lab \LABNUMBER: \textsc{\LABTITLE}}
+% \def\REPORTTITLE{\textsc{\LABTITLE}}
 
 \everymath{\displaystyle}
+
+% ----------------------------
+%      Tikz Configuration
+% ----------------------------
+
+\tikzstyle{block} = [draw, rectangle, 
+minimum height=3em, minimum width=3em]
+\tikzstyle{sum} = [draw, circle, node distance=1cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+\tikzstyle{triangle} = [isosceles triangle, draw, minimum height = 3em]

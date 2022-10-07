@@ -1,0 +1,49 @@
+\begin{tikzpicture}[auto, node distance=2cm,>=latex']
+
+    % We start by placing the blocks
+    % \node [input, name=input] {};
+    % \node [sum, right of=input] (sum) {};
+    % \node [triangle, right of=sum] (controller) {$G_c(s)$};
+    % \node [block, right of=controller,
+    %         node distance=3cm] (system) {$G_p(s)$};
+    % % We draw an edge between the controller and system block to 
+    % % calculate the coordinate u. We need it to place the measurement block. 
+    % \draw [->] (controller) -- node[name=u] {$U$} (system);
+    % \node [sum, right of=system, node distance=2cm] (disturbance) {};
+    % \node [block, above of=disturbance] (g_d) {$G_d(s)$};
+    % \node [input, left of=g_d] (dist_input){$D$};
+    % \node [output, right of=disturbance] (output) {};
+    % \node [block, below of=u] (measurements) {$G_m(s)$};
+
+    % % Once the nodes are placed, connecting them is easy. 
+    % \draw [draw,->] (input) -- node {$Y_{sp}$} (sum);
+    % \draw [->] (sum) -- node {$E$} (controller);
+    % \draw [->] (system) -- node {$Y_u$} (disturbance);
+    % \draw [->] (disturbance) -- node [name=y] {$Y$}(output);
+    % \draw [->] (g_d) -- node {$Y_d$} (disturbance);
+    % \draw [draw, ->] (dist_input) -- node {$D$} (g_d);
+    % \draw [->] (y) |- (measurements);
+    % \draw [->] (measurements) -| node[pos=0.99] {$-$} 
+    %     node [near end] {$Y_m$} (sum);
+
+    \node [input, name=input] {};
+    \node [sum, right of=input] (sum) {};
+    \node [block, name=diff1, right of=sum] (diff1) {$\frac{1}{s}$};
+    \draw [->] (sum) -- node[name=s2x] {$s^2 X$} (diff1);
+    \node[block, below of = diff1] (amp1){$a_0$};
+    \node[block, below of = amp1] (amp2){$a_1$};
+
+    \node [block, name=diff2, right of=diff1] (diff2) {$\frac{1}{s}$};
+    \draw [->] (diff1) -- node[name=sx] {$sX$} (diff2);
+
+    \node [output, right of = diff2](output) {};
+    \draw [->] (diff2) -- node[name=x] {$X$} (output);
+
+    \draw [-] (sx) |- (amp1);
+    \draw [->] (amp1) -| node[pos=0.99] {$-$} 
+         node [near end, name=measurement1] {$Y_m$} (sum);
+
+    \draw [-] (x) |- (amp2);
+    \draw [->] (amp2) -| node[left of = measurement1] {$-$}
+         node [near end] {$Y_m$} (sum);
+\end{tikzpicture}
