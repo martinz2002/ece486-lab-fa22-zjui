@@ -14,25 +14,18 @@
 
 From Newton's 3rd law, I derive the following equation:
 \begin{align*}
-  ma_{tot} &= f + b\dot{x}+kx \\
-  a_{tot} &= \frac{\D^2}{\D t^2} x
+  f &= ma_{tot} + bv + kx \\
+  a_{tot} &= \frac{\D^2}{\D t^2} x \\
+  v &= \frac{\D}{\D t} x
 \end{align*}
-thus I have the second-order ODE for the system,
+thus the ODE should look like this:
 \begin{equation*}
-  m\ddot{x}=b\dot{x}+kx+f
-\end{equation*}
-and by simplifying the equation, I obtain
-\begin{equation*}
-  \ddot{x}=\frac{b}{m}\dot{x}+\frac{k}{m}x+\frac{f}{m}.
+  f(t)=m\ddot{x}(t)+b\dot{x}(t)+kx(t)
 \end{equation*}
 
 Substituting the values for $m$, $b$, $k$, and $f$ I obtain
 \begin{equation}\label{eq-ode}
-  \begin{cases}
-    \ddot{x}&=\frac{0.7}{2}\dot{x}+\frac{1}{2}x+\frac{0.5}{2}\\
-    x_{t=0} &= 0 \\
-    \dot{x}_{t=0} &= 0.
-  \end{cases}
+  f(t)=2\ddot{x}(t)+0.7\dot{x}(t)+x(t).
 \end{equation}
 
 % End of Ex a.
@@ -42,15 +35,25 @@ Substituting the values for $m$, $b$, $k$, and $f$ I obtain
 Laplace Transform of 2nd-order ODE (with zero initial condition) in Equation
 \refeq{eq-ode}:
 \begin{align*}
-  \mathcal{L}\lbrace {\ddot{x}} \rbrace = s^2 X(s)
-                    = \frac{0.7}{2} sX(s) + \frac{1}{2} X(s) + \frac{0.5}{2s}
+  f(t)=2\ddot{x}(t)+0.7\dot{x}(t)+x(t) \leftrightarrow F(s)=2 s^2 X(s)+
+                                                            0.7 sX(s) + X(s)
 \end{align*}
-which gives the diagram below:
-
-\input{exb_diagram_tikz.tex}
+and move $s^2 X$ to LHS and $F$ to RHS:
+\begin{equation} 
+  s^2 X = \frac{0.7}{2}sX+\frac{1}{2}X-\frac{1}{2}F
+  \label{eq-diagram}
+\end{equation}
+which gives the diagram in Figure \ref{pic-diagram}.
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.7\textwidth]{pics/prelab-blkdgm.jpg}
+  \caption{Block diagram for Equation \refeq{eq-diagram}}
+  \label{pic-diagram}
+\end{figure}
+% \input{exb_diagram_tikz.tex}
 
 % End of Ex b.
-
+\pagebreak
 \EXERCISE{c}
 
 For Figure 2(b) in the manual I can derive a group of equations based on KVL,
