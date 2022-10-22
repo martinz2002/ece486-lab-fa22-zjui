@@ -1,4 +1,8 @@
-\begin{tikzpicture}[auto, node distance=2cm,>=latex']
+\input{../lab_template.tex}
+\begin{document}
+\def\LABNUMBER{1}
+\def\LABTITLE{Analog Simulation}
+\begin{tikzpicture}[auto, node distance=2cm]
 
     % We start by placing the blocks
     % \node [input, name=input] {};
@@ -28,6 +32,7 @@
 
     \node [input, name=input] {};
     \node [sum, right of=input] (sum) {};
+    \draw [->] (input) -- node[name=input]{$U(s)$} (sum) node [left of = sum, above of = sum] {$+$};
     \node [block, name=diff1, right of=sum] (diff1) {$\frac{1}{s}$};
     \draw [->] (sum) -- node[name=s2x] {$s^2 X$} (diff1);
     \node[block, below of = diff1] (amp1){$a_0$};
@@ -47,3 +52,6 @@
     \draw [->] (amp2) -| node[left of = measurement1] {$-$}
          node [near end] {$Y_m$} (sum);
 \end{tikzpicture}
+
+     
+\end{document}

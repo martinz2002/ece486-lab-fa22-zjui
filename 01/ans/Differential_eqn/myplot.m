@@ -1,9 +1,9 @@
-plot(ScopeData.time,ScopeData.signals(1).values)
+plot(out.tout,out.y)
 hold on
-plot(ScopeData.time,ScopeData.signals(2).values)
+plot(out.tout,out.y_dot)
 xlabel("Time, t")
-ylabel("Voltage, V")
-legend("x(t)",...
-    "x'(t)")
-title("Function x(t) with b=0.7")
+ylabel("Response")
+legend("y(t)",...
+    "y'(t)")
+title("Response of H(s) in time domain")
 hold off
