@@ -103,6 +103,23 @@
 % \setallmath{\displaymath}
 \newcommand{\score}{\hfill \underline{\hspace{0.65cm}}\,/} % for score underline
 \newcommand\RR{\textsuperscript{\textregistered}~} % for registered mark
+
+\usepackage{listings}
+\lstset{                  %设置代码块
+    basicstyle=\small\ttfamily,% 基本风格
+    numbers=left,    % 行号
+    numbersep=10pt,  % 行号间隔
+    tabsize=4,       % 缩进
+    extendedchars=true, % 扩展符号？
+    breaklines=true, % 自动换行
+    frame=shadowbox,  % 框架左边竖线
+    xleftmargin=19pt,% 竖线左边间距
+    showspaces=false,% 空格字符加下划线
+    showstringspaces=false,% 字符串中的空格加下划线
+    showtabs=false,  % 字符串中的tab加下划线
+    % keywordstyle=\bfseries\color{NavyBlue}, % 设置关键字为粗体，颜色为 NavyBlue
+}
+
 \begin{document}
 % consider aligning your names like the following
 % ----
@@ -116,7 +133,7 @@
 \author{Tiantian Zhong\\ 3200110643 \\ Section LA1}
 \maketitle
 \noindent \fbox{\bf \Large Total: \underline{\hspace{0.65cm}}\,/50}
-\section*{Prelab Exercises}
+\section*{\sc Prelab Exercises}
 
 We have
 \[H(s)=\frac{Y(s)}{U(s)} = \frac{25}{s^2+6s+25} = \frac{25}{(s+3)^2 + 16}.\]
@@ -136,18 +153,14 @@ Solve $s^2 + 6s + 25=0$ we have the poles
 \[s_{\text{poles}}=\frac{-6\pm \sqrt{36-100}}{2} = -3\pm 4j.\]
 
 Figure \refeq{fig-prelab-diagram} shows the block diagram for this system.
-\begin{figure}
-       \centering
-       \includegraphics[width=0.8\textwidth]{figs/prelab_blocks.png}
-       \caption{Block diagram of $H(s) = \frac{25}{s^2+6s+25}$}
-       \label{fig-prelab-diagram}
-\end{figure}
 
 % End of Prelab Exercises
 
 \section{{\sc State Space Model of} $H_1(s)$\score 8}
 (Compare the plots of \verb|y_dot| and \verb|y| obtained in Part 1 of the lab with the plots previously made for the prelab. Why are they identical? Attach plots---if your prelab plot was wrong, fix it and attach the corrected plot.)
 % add your discussion here
+
+The plots for Prelab and Part 1 are identicle. It is because the transfer function $H(s)$ in prelab can be written in state-space form:
 
 % the following are templates for two FIGURES
 \noindent The plots of $y$ and $\dot{y}$ from the prelab and lab are shown in Figures~\ref{fig:prelab2} and~\ref{fig:lab2-part1}.
@@ -189,9 +202,9 @@ Fill the table of specs of time domain responses.
 \begin{tabular}{c|c|c|c|c|c|c} \hline \hline
 \rowcolor{Grey} & No zero & $H_2(s)$ zero &  $H_2(s)$ zero &  $H_2(s)$ zero  &  $H_2(s)$ zero &  $H_2(s)$ zero \\
 \rowcolor{Grey} Specs & $H_1(s)$ & at $s = -30$ & at $s = -3$ &  at $s = -1.5$ &   at $s = 1.8$ &   at $s = 18$ \\ \hline
-$M_p$\,[\%] &  &  &  &  &  &  \\ \hline
-$t_r$\,[s] &  &  &  &  &  &  \\ \hline
-$t_s$\,[s] &  &  &  &  &  & \\ \hline
+$M_p$\,[\%] &  & 10 &  &  &  &  \\ \hline
+$t_r$\,[s] &  & 0.6 &  &  &  &  \\ \hline
+$t_s$\,[s] &  & 0.4 &  &  &  & \\ \hline
 \end{tabular}
 \end{center}
 \end{table}
@@ -266,18 +279,32 @@ k_3 &= 25+\frac{625}{\alpha^2 \zeta^2 - 10\alpha\zeta + 25}
 \item {\sc Matlab} code
 \end{itemize}
 
-\begin{figure}
+\pagebreak
+\section*{Attachments}
+\subsection*{Plots}
+\begin{figure}[h!]
        \centering
-       \includegraphics[width=0.6\textwidth]{figs/prelab_plot.eps}
+       \includegraphics[width=0.8\textwidth]{figs/prelab_blocks.png}
+       \caption{Block diagram of $H(s) = \frac{25}{s^2+6s+25}$}
+       \label{fig-prelab-diagram}
+\end{figure}
+
+\begin{figure}[h!]
+       \centering
+       \includegraphics[width=0.7\textwidth]{figs/prelab_plot.eps}
        \caption{Plot from the prelab}
        \label{fig:prelab2}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h!]
        \centering
-       \includegraphics[width=0.6\textwidth]{figs/part_1_plot.eps}
+       \includegraphics[width=0.7\textwidth]{figs/part_1_plot.eps}
        \caption{Plot from part 1}
        \label{fig:lab2-part1}
 \end{figure}
+
+\newpage
+\subsection*{\textsc{Matlab} Code}
+
 
 \end{document}

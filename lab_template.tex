@@ -31,8 +31,8 @@
 % \usepackage{plex-otf}
 \newcommand{\D}{\text{d}}
 
-% \usepackage{mathptmx}
-% \setmainfont{Times New Roman}
+\usepackage{mathptmx}
+\setmainfont{Times New Roman}
 
 \newcommand{\score}{\hfill \underline{\hspace{0.65cm}}\,/} % for score underline
 \newcommand\RR{\textsuperscript{\textregistered}~} % for registered mark
@@ -64,7 +64,9 @@
 }
 
 \newcommand{\E}{\text{e}}
-\newcommand{\Diff}{\text{d}}
+% \newcommand{\Diff}{\text{d}}
+\renewcommand{\Re}{\text{Re}}
+\renewcommand{\Im}{\text{Im}}
 
 \title{\textbf{Lab Report} \\ Lab \#\LABNUMBER: \textsc{\LABTITLE}}
 \author{\AUTHOR \\ \ID}
@@ -87,3 +89,8 @@ minimum height=3em, minimum width=3em]
 \tikzstyle{output} = [coordinate]
 \tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
 \tikzstyle{triangle} = [isosceles triangle, draw, minimum height = 3em]
+\newcommand\K{\text{k}} % kilo = 1000
+\date{    \begin{tabular}{rl}
+    Experiment Date: &  \EXPDATE \\
+    Report Date: & \RPTDATE
+\end{tabular} }

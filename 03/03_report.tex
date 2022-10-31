@@ -1,0 +1,90 @@
+\input{../lab_template}
+\def\LABNUMBER{3}
+\def\LABTITLE{Digital Simulation of a Closed-Loop System}
+\def\RPTDATE{\today}
+\def\EXPDATE{October 25, 2022}
+
+
+\begin{document}
+    \makeMyTitle
+   
+    \section*{\sc Prelab Exercises}
+    \EXERCISE{a}
+    The block diagram is shown as Figure \ref{fig-block}, \ref{fig-torque-motor}, and \ref{fig-tape-dynamics}.
+
+    \begin{figure}[h!]
+        \begin{minipage}{0.99\linewidth}
+            \centering
+            \includegraphics[width=0.99\textwidth]{figs/prelab-block-overall.png}
+            \caption{Block Diagram for the System}
+            \label{fig-block}
+        \end{minipage}
+        \\
+        \begin{minipage}{0.48\linewidth}
+            \centering
+            \includegraphics[width=0.99\textwidth]{figs/prelab-block-torque-motor.png}
+            \caption{Block Diagram for Torque Motor Subsystem}
+            \label{fig-torque-motor}
+        \end{minipage}
+        \hspace{2em}
+        \begin{minipage}{0.48\linewidth}
+            \centering
+            \includegraphics[width=0.99\textwidth]{figs/prelab-block-tape-dynamics.png}
+            \caption{Block Diagram for Tape Dynamics Subsystem}
+            \label{fig-tape-dynamics}
+        \end{minipage}
+    \end{figure}
+
+    \EXERCISE{b}
+
+    The system can be represented with, in $s$-domain,
+    \begin{equation}
+        \Omega = \left[(\Omega_r K_r - \Omega)KH_1+T_d\right]H_2
+    \end{equation}
+    where $H_1$ and $H_2$ are the transfer function for Torque Motor and Tape Dynamics, respectively.
+
+    Using the conditions given, we derive the transfer functions $H_1$ and $H_2$ as
+    \begin{align}
+        H_1(s) &= \frac{T(s)}{V(s)} = 5\cdot \frac{3}{s(s+3)} \cdot \frac{1}{\frac{1}{s}}=\frac{15}{s+3} \\
+        H_2(s) &= \frac{\Omega(s)}{T(s)+T_d(s)} = \frac{1}{\frac{1}{4}s+3} = \frac{4}{s+12}
+    \end{align}
+
+    As we take $\tau_d=0$, whose Laplace transform should be $T_d = \mathcal{L} \left\lbrace \tau_d \right\rbrace = 0$, we will find
+    \begin{equation}
+        \frac{\Omega(s)}{\Omega_r(s)} = \frac{K_r\Omega_r K H_1 H_2}{K H_1 H_2 +1} = \boxed{\frac{60K\cdot K_r}{s^2+15s+60K+36}} (\tau_d = 0)
+        \label{eq-omega-r}
+    \end{equation}
+
+    With $\omega_r=0 \leftrightarrow \Omega_r = 0$, we derive the ratio of tape speed and disturbance torque as 
+    \begin{equation}
+        \frac{\Omega(s)}{T_d(s)}=\frac{H_2}{KH_1 H_2 +1} = \boxed{\frac{4s+12}{s^2 +15s+60K+36}} (\omega_r = 0)\label{eq-omega}
+    \end{equation}
+
+    \EXERCISE{c}
+
+    Solve for poles of the system and we have
+    \begin{equation}
+        s_{\text{pole}}=\frac{-15\pm \sqrt{15^2-4(60K+36)}}{2}=\frac{-15\pm \sqrt{81-240K}}{2},
+    \end{equation}
+    all of which have to be located on OLHP. This indicates that 
+    \begin{align}
+            81-240K &< 0 \\
+            \Re(s_{\text{poles}}) &< 0 \\
+            60K+36&>0 \notag \\
+            K\cdot K_r &>0 \notag
+    \end{align}
+    
+    Thus $\boxed{K>\frac{81}{240}=\frac{27}{80}}$.
+
+    \EXERCISE{d}
+    With Equation \ref{eq-omega}, we pull in $T_d = \frac{1}{s}$ and $\omega\leq 0.01\leftrightarrow \Omega \leq \frac{0.01}{s}$ and the FVT gives
+    \begin{align}
+        \Omega_{\text{ss}}(s)=\lim_{s\rightarrow 0} \Omega (s) &= \lim_{s\rightarrow 0} \frac{60K\cdot K_r}{s^2 + 15s + 60K+ 36}\cdot \frac{1}{s} \notag\\
+        &= \frac{60K\cdot K_r}{60K+36}\cdot \frac{1}{s}\leq \frac{0.01}{s}
+    \end{align}
+    which yields $\boxed{K \leq \frac{0.03}{5K_r -0.05}}$.
+
+    \EXERCISE{e}
+    The solution for $\Omega_r = \frac{1}{s}$ gives
+    % \begin
+\end{document}
